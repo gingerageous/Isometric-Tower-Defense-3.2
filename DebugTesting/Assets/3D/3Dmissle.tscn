@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://DebugTesting/Assets/3D/logoandtext.tscn" type="PackedScene" id=1]
+[ext_resource path="res://DebugTesting/Assets/3D/basicmissile.dae" type="PackedScene" id=2]
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.169231, 0.415385, 1 )
+colors = PoolColorArray( 0, 0.412323, 0.894531, 1, 0, 1, 0.414062, 1, 0.796728, 0.855469, 0.103592, 1, 0.851562, 0.0898132, 0.0898132, 1 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 0.232367 ), 0.0, 0.0, 0, 0, Vector2( 0.343066, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.113604 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.48
+direction = Vector3( 0, -1, 0 )
+spread = 3.46
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 4.0
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 9 )
+
+[sub_resource type="SpatialMaterial" id=10]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+albedo_color = Color( 1, 1, 1, 0.407843 )
+
+[sub_resource type="SphereMesh" id=11]
+material = SubResource( 10 )
+radius = 0.1
+height = 0.2
+
+[node name="basicmissile" instance=ExtResource( 2 )]
+
+[node name="logoandtext" parent="." index="6" instance=ExtResource( 1 )]
+transform = Transform( 0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 0.00922163, 0.068354, 0.011268 )
+
+[node name="Particles" type="Particles" parent="." index="7"]
+transform = Transform( 1, -3.72529e-09, 0, 3.72529e-09, 1, 0, 0, 0, 1, -0.0199198, -1.03413, 0 )
+lifetime = 0.15
+local_coords = false
+process_material = SubResource( 1 )
+draw_pass_1 = SubResource( 11 )
+__meta__ = {
+"_editor_description_": ""
+}

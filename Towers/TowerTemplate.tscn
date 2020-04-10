@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Towers/TowerTemplate.gd" type="Script" id=1]
+[ext_resource path="res://Towers/Projectiles/ProjectileTemplate.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/Assets/towerRound_sampleC_W.png" type="Texture" id=3]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, -160, 320, 0, 0, 160, -320, 0 )
+
+[node name="TowerTemplate" type="Node2D"]
+script = ExtResource( 1 )
+attack_range = 2
+projectile = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 0, -16 )
+
+[node name="Tower" type="Sprite" parent="Node2D"]
+scale = Vector2( 0.8, 1 )
+texture = ExtResource( 3 )
+
+[node name="ProjectileSpawn" type="Position2D" parent="Node2D"]
+position = Vector2( 0, -5.09258 )
+
+[node name="AttackRange" type="Area2D" parent="."]
+position = Vector2( 0, 44 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource( 1 )
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="body_entered" from="AttackRange" to="." method="_on_AttackRange_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_AttackRange_body_exited"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]

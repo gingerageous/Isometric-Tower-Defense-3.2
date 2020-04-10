@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Towers/Projectiles/ProjectileTemplate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Towers/Projectiles/Artillery.gd" type="Script" id=2]
+[ext_resource path="res://Towers/Projectiles/Assets/ball_bowling2.png" type="Texture" id=3]
+[ext_resource path="res://Towers/Projectiles/Assets/ArtilleryTrajectoryAnim.tres" type="Animation" id=4]
+
+[node name="Artillery" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="Shadow" parent="." index="1"]
+position = Vector2( 0, 60 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+autoplay = "Trajectory"
+anims/Trajectory = ExtResource( 4 )
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

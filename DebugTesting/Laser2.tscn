@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://DebugTesting/Assets/LaserWithBlur.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise_tex : hint_albedo;
+uniform float distortion_amp : hint_range(0.1, 2.0, 0.1);
+
+
+
+void fragment(){
+	vec4 tex = texture(TEXTURE, UV + (texture(noise_tex, UV).r * distortion_amp));
+	
+	
+	
+	COLOR = tex;
+	
+}"
+
+[sub_resource type="OpenSimplexNoise" id=4]
+
+[sub_resource type="NoiseTexture" id=5]
+seamless = true
+noise = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/distortion_amp = 0.1
+shader_param/noise_tex = SubResource( 5 )
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.343195, 0.662722, 1 )
+colors = PoolColorArray( 0.102386, 0.191883, 0.429688, 1, 0.105214, 0.292969, 0.0526428, 1, 0.652665, 0.738281, 0.161499, 1, 0.671875, 0.312378, 0.154846, 1 )
+
+[node name="Laser2" type="Node2D"]
+position = Vector2( 19.5366, 43.3617 )
+
+[node name="Line2D" type="Line2D" parent="."]
+material = SubResource( 3 )
+points = PoolVector2Array( -0.416855, 0.265503, 183.051, 0.913803 )
+gradient = SubResource( 1 )
+texture = ExtResource( 1 )
+texture_mode = 2
+end_cap_mode = 2

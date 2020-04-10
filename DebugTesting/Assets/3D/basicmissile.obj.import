@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/basicmissile.obj-12ca0ea4bb70081e69c5af8986a45acd.mesh"
+
+[deps]
+
+files=[ "res://.import/basicmissile.obj-12ca0ea4bb70081e69c5af8986a45acd.mesh" ]
+
+source_file="res://DebugTesting/Assets/3D/basicmissile.obj"
+dest_files=[ "res://.import/basicmissile.obj-12ca0ea4bb70081e69c5af8986a45acd.mesh", "res://.import/basicmissile.obj-12ca0ea4bb70081e69c5af8986a45acd.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

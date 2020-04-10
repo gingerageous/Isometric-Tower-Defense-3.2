@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://DebugTesting/Assets/SmudgeLaser.png" type="Texture" id=1]
+
+[sub_resource type="ShaderMaterial" id=4]
+
+[node name="Line2D" type="Line2D"]
+material = SubResource( 4 )
+position = Vector2( 79.6061, -18.5565 )
+scale = Vector2( 0.997167, 0.980092 )
+points = PoolVector2Array( -78.5465, 21.9549, 312.061, 23.031 )
+width = 40.0
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 1 )
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2

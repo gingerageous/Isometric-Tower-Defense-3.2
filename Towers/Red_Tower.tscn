@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Towers/TowerTemplate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Towers/Projectiles/ArtilleryCalculatedwith3D.tscn" type="PackedScene" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, -352, 704, 0, 0, 352, -704, 0 )
+
+[node name="Red_Tower" instance=ExtResource( 1 )]
+attack_range = 5
+projectile = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="AttackRange" index="0"]
+shape = SubResource( 1 )

@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://DebugTesting/Assets/3D/wood.material" type="Material" id=1]
+[ext_resource path="res://DebugTesting/Assets/3D/detail_tree.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://DebugTesting/Assets/3D/_defaultMat.material" type="Material" id=3]
+[ext_resource path="res://DebugTesting/Assets/3D/foliage.material" type="Material" id=4]
+
+[node name="TreeTest" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 4 )
+material/1 = ExtResource( 1 )
+material/2 = ExtResource( 3 )

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Towers/Projectiles/ProjectileTemplate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Towers/Projectiles/BasicTweenProjectile.gd" type="Script" id=2]
+
+[node name="BasicTweenProjectile" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+max_speed = 700
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Towers/Projectiles/ProjectileTemplate.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.517647, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.90625, 0.880485, 0.0495605, 1, 0.887218, 0.0935737, 0.0935737, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 40
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 20.2166, 2.47148 )
+
+[node name="ProjectileTemplate" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1, 5 )
+texture = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )

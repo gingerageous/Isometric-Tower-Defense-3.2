@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://DebugTesting/Assets/3D/3Dmissle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Towers/Projectiles/Assets/ball_bowling1.png" type="Texture" id=2]
+[ext_resource path="res://Towers/Projectiles/ArtilleryCalculatedwith3D.gd" type="Script" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[node name="ArtilleryCalculatedwith3D" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotate = false
+loop = false
+
+[node name="Sprite" type="Sprite" parent="PathFollow2D"]
+texture = ExtResource( 2 )
+
+[node name="Viewport" type="Viewport" parent="PathFollow2D"]
+size = Vector2( 200, 200 )
+own_world = true
+transparent_bg = true
+handle_input_locally = false
+render_target_v_flip = true
+
+[node name="basicmissile" parent="PathFollow2D/Viewport" instance=ExtResource( 1 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="PathFollow2D/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91038e-10, 0.0445707, 1.18745 )
+current = true
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

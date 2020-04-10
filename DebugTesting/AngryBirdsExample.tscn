@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://DebugTesting/AngryBirdsExample.gd" type="Script" id=1]
+[ext_resource path="res://iconcone.png" type="Texture" id=2]
+
+[node name="AngryBirdsExample" type="Node2D"]
+position = Vector2( 59.3769, 541.377 )
+script = ExtResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_mode = 2
+
+[node name="Pivot" type="Position2D" parent="."]
+rotation = 0.785398
+
+[node name="TextureProgress" type="TextureProgress" parent="Pivot"]
+margin_left = -0.494987
+margin_top = -22.2484
+margin_right = 63.505
+margin_bottom = 41.7516
+rect_scale = Vector2( 4.36, 0.759999 )
+value = 50.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0, 0, 0, 0.301961 )
